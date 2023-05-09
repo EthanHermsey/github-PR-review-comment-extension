@@ -12,3 +12,7 @@ __Install:__
 
 * In the top-left, click 'load unpacked' and select the folder where you downloaded    
   the files.
+  
+
+
+__After installing, navigate to a pull request and press ALT + SHIFT + F to format the pull request.__
