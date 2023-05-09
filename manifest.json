@@ -1,0 +1,25 @@
+{
+    "name": "Github PR review extension",
+    "version": "1.0",
+    "description": "Helps to show pull request's review comments",
+    "author": "Ethan Hermsey",
+    "manifest_version": 3,
+    "icons": {
+        "32": "icon-32.png",
+        "48": "icon-48.png",
+        "128": "icon-128.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://github.com/*/*/pull/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "css": [
+                "style.css"
+            ]
+        }
+    ]
+}
