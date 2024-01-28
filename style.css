@@ -8,3 +8,9 @@
     justify-content: center;
     align-items: center;
 }
+
+.format-button-container {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+}

@@ -1,21 +1,36 @@
 const ext = {
-    pressedKeys: {},
     state: 0,
     minShowTime: 1000,
-    minWaitTime: 800
+    minWaitTime: 800,
+    buttonContainer: undefined
 };
 
-window.onload = () =>{
-    document.onkeyup = (e) => {
-        delete ext.pressedKeys[e.key];
-    }
-    document.onkeydown = (e) => {
-        ext.pressedKeys[e.key] = true;
-        if ( ext.pressedKeys['Alt'] && ext.pressedKeys['Shift'] && ext.pressedKeys['F']){
-            ext.state = 0;
-            format();
-        }
-    }
+window.onload = () => {
+
+    const container = document.createElement('div');
+    container.className = "format-button-container color-bg-subtle";
+
+    const button = document.createElement('button');
+    button.innerText = 'Only show review comments';
+    button.className = 'btn-primary btn';
+    button.onclick = () => {
+        container.style.display = 'none';
+        ext.state = 0;
+        format();
+    };
+
+    container.appendChild(button);
+    ext.buttonContainer = container;
+
+    document.addEventListener('mousedown', () => appendButton(1500));
+    appendButton();
+}
+
+const appendButton = (timeout = 0) => {
+    setTimeout(() => {
+        const descriptionBlock = document.querySelector('.TimelineItem.js-command-palette-pull-body');
+        if ( descriptionBlock ) descriptionBlock.append(ext.buttonContainer);
+    }, timeout);
 }
 
 const format = () => {
